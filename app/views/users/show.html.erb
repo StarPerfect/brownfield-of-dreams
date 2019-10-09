@@ -9,8 +9,12 @@
   </ul>
   <%= button_to 'Connect to Github', '/auth/github' %>
   <section>
-    <h2>Github</h2>
-
+    <h2>GitHub</h2>
+    <% facade.repos.each do |r| %>
+    <ul class='repo'>
+      <li class='name'><%= r.name %></li>
+      </ul>
+    <% end %>
   </section>
   <section>
     <h1>Bookmarked Segments</h1>
