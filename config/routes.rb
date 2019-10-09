@@ -34,11 +34,12 @@ Rails.application.routes.draw do
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
+  get '/auth/github/callback', to: "session#new"
+  
   # Is this being used?
   get '/video', to: 'video#show'
 
-  resources :users, only: %i[new create update edit]
-
+  resources :users, only: [:new, :create, :update, :edit]
   resources :tutorials, only: %i[show index] do
     resources :videos, only: %i[show index]
   end
