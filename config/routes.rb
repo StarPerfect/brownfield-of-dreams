@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get '/get_started', to: 'get_started#show'
 
   get '/auth/github/callback', to: "session#new"
-  
+
   # Is this being used?
   get '/video', to: 'video#show'
 
