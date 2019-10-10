@@ -3,8 +3,10 @@ require 'rails_helper'
 describe 'User Dashboard View' do
   describe 'As a logged in user, when I visit /dashboard' do
     before :each do
-      json_response = File.open("./fixtures/github_repo.json")
-      stub_request(:get, "https://api.github.com/user/repos").to_return(status: 200, body: json_response)
+      repos_response = File.open("./fixtures/github_repo.json")
+      stub_request(:get, "https://api.github.com/user/repos").to_return(status: 200, body: repos_response)
+      followers_response = File.open("./fixtures/github_followers.json")
+      stub_request(:get, "https://api.github.com/user/followers").to_return(status: 200, body: followers_response)
     end
 
     it 'Then I should see a section for "Github" with 5 repo names' do
