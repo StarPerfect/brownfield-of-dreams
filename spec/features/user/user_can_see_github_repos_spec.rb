@@ -7,6 +7,8 @@ describe 'User Dashboard View' do
       stub_request(:get, "https://api.github.com/user/repos").to_return(status: 200, body: repos_response)
       followers_response = File.open("./fixtures/github_followers.json")
       stub_request(:get, "https://api.github.com/user/followers").to_return(status: 200, body: followers_response)
+      following_response = File.open("./fixtures/github_following.json")
+      stub_request(:get, "https://api.github.com/user/following").to_return(status: 200, body: following_response)
     end
 
     it 'Then I should see a section for "Github" with 5 repo names' do

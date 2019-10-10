@@ -10,8 +10,12 @@ describe 'User Dashboard View' do
     before :each do
       repos_response = File.open("./fixtures/github_repo.json")
       stub_request(:get, "https://api.github.com/user/repos").to_return(status: 200, body: repos_response)
+
       followers_response = File.open("./fixtures/github_followers.json")
       stub_request(:get, "https://api.github.com/user/followers").to_return(status: 200, body: followers_response)
+      
+      following_response = File.open("./fixtures/github_following.json")
+      stub_request(:get, "https://api.github.com/user/following").to_return(status: 200, body: following_response)
     end
 
     it 'I should see a Followers section within the GitHub section with all my followers and links to their profile' do

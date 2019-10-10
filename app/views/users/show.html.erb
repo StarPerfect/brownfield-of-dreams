@@ -22,6 +22,12 @@
             <li class='user'><%= link_to f.login, "#{f.html_url}" %></li>
           </ul>
         <% end %>
+        <h2>Following</h2>
+        <% facade.following.each do |f| %>
+          <ul class='following'>
+            <li class='login'><%= link_to f.login, "#{f.html_url}" %></li>
+          </ul>
+        <% end  %>
     </section>
   <% end %>
   <section>
