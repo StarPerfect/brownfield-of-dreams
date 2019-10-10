@@ -6,15 +6,11 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    binding.pry
-    # <ActionController::Parameters {"utf8"=>"✓", "authenticity_token"=>"uOQ6TsJ7SZ478E96BHHCwGNqxMAwpP4XoRPCO8UBmntmtgJxinOWEnI4sSWkBO2rEfxfXH5AyAzbjF/xpqEPKQ==",
-    #    "tutorial"=>{"title"=>"Hello",
-    #      "description"=>"Something",
-    #      "thumbnail"=>"https://www.youtube.com/watch?v=AXpuu8IXdm4&list=PLOU8Lmsz4j5Hw1gDqwUgcE20n8Q0WR4er&index=7&t=4s"
-    #      }, "commit"=>"Save",
-    #      "controller"=>"admin/tutorials",
-    #      "action"=>"create"
-    #      } permitted: false>
+    tutorial = Tutorial.create(tutorial_params)
+    if tutorial.save
+      flash[:success] = 'Successfully created tutorial.' 
+    end
+    redirect_to tutorial_path(tutorial)
   end
 
   def new
@@ -32,6 +28,6 @@ class Admin::TutorialsController < Admin::BaseController
   private
 
   def tutorial_params
-    params.require(:tutorial).permit(:tag_list)
+    params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail)
   end
 end

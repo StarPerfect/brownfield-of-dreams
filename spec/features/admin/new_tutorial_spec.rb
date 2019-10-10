@@ -19,12 +19,12 @@ describe 'Add New Tutorial by Admin' do
 
       fill_in 'Title', with: 'A Meaningful Name'
       fill_in 'Description', with: 'Some Content'
-      fill_in 'Thumbnail', with: 'Valid YouTube Thumbnail'
+      fill_in 'Thumbnail', with: 'https://www.youtube.com/watch?v=q7DfQMPmJRI'
 
       click_on 'Save'
 
       tutorial = Tutorial.last
-binding.pry
+
       expect(current_path).to eq("/tutorials/#{tutorial.id}")
       expect(page).to have_content('Successfully created tutorial.')
     end
