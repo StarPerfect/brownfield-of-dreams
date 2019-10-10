@@ -3,9 +3,6 @@ require 'rails_helper'
 describe 'User Dashboard View' do
   describe 'As a logged in user, when I visit /dashboard' do
     before :each do
-      VCR.turn_off!
-      WebMock.allow_net_connect!
-
       json_response = File.open("./fixtures/github_repo.json")
       stub_request(:get, "https://api.github.com/user/repos").to_return(status: 200, body: json_response)
     end
