@@ -7,6 +7,10 @@ class GithubApiService
     get_response('/user/followers')
   end
 
+  def get_user_following
+    get_response('/user/following')
+  end
+
   private
 
   def get_response(url)
