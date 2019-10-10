@@ -12,7 +12,7 @@
     <h2>GitHub</h2>
     <% facade.repos.each do |r| %>
     <ul class='repo'>
-      <li class='name'><%= r.name %></li>
+      <li class='name'><%= link_to r.name, "#{r.html_url}" %></li>
       </ul>
     <% end %>
   </section>
