@@ -1,0 +1,42 @@
+[
+    {
+        "login": "HeatherHerries",
+        "id": 23111126,
+        "node_id": "MDQ6VXNlcjIzMTExMTI2",
+        "avatar_url": "https://avatars2.githubusercontent.com/u/23111126?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/HeatherHerries",
+        "html_url": "https://github.com/HeatherHerries",
+        "followers_url": "https://api.github.com/users/HeatherHerries/followers",
+        "following_url": "https://api.github.com/users/HeatherHerries/following{/other_user}",
+        "gists_url": "https://api.github.com/users/HeatherHerries/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/HeatherHerries/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/HeatherHerries/subscriptions",
+        "organizations_url": "https://api.github.com/users/HeatherHerries/orgs",
+        "repos_url": "https://api.github.com/users/HeatherHerries/repos",
+        "events_url": "https://api.github.com/users/HeatherHerries/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/HeatherHerries/received_events",
+        "type": "User",
+        "site_admin": false
+    },
+    {
+        "login": "anlewis",
+        "id": 26888961,
+        "node_id": "MDQ6VXNlcjI2ODg4OTYx",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/26888961?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/anlewis",
+        "html_url": "https://github.com/anlewis",
+        "followers_url": "https://api.github.com/users/anlewis/followers",
+        "following_url": "https://api.github.com/users/anlewis/following{/other_user}",
+        "gists_url": "https://api.github.com/users/anlewis/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/anlewis/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/anlewis/subscriptions",
+        "organizations_url": "https://api.github.com/users/anlewis/orgs",
+        "repos_url": "https://api.github.com/users/anlewis/repos",
+        "events_url": "https://api.github.com/users/anlewis/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/anlewis/received_events",
+        "type": "User",
+        "site_admin": false
+    }
+]
