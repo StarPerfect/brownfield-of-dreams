@@ -24,7 +24,8 @@ describe 'Add New Tutorial by Admin' do
       click_on 'Save'
 
       tutorial = Tutorial.last
-
+      video = create(:video, tutorial: tutorial)
+binding.pry
       expect(current_path).to eq("/tutorials/#{tutorial.id}")
       expect(page).to have_content('Successfully created tutorial.')
     end
