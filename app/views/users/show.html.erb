@@ -9,13 +9,19 @@
   </ul>
   <%= button_to 'Connect to Github', '/auth/github' %>
   <% if  current_user.github_token != nil %>
-    <section>
+    <section class='github'>
       <h2>GitHub</h2>
-      <% facade.repos.each do |r| %>
-      <ul class='repo'>
-        <li class='name'><%= link_to r.name, "#{r.html_url}" %></li>
-        </ul>
-      <% end %>
+        <% facade.repos.each do |r| %>
+          <ul class='repo'>
+            <li class='name'><%= link_to r.name, "#{r.html_url}" %></li>
+          </ul>
+        <% end %>
+        <h2>Followers</h2>
+        <% facade.followers.each do |f| %>
+          <ul class='followers'>
+            <li class='user'><%= link_to f.login, "#{f.html_url}" %></li>
+          </ul>
+        <% end %>
     </section>
   <% end %>
   <section>
