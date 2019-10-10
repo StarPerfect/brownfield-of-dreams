@@ -35,7 +35,6 @@ Rails.application.routes.draw do
   get '/get_started', to: 'get_started#show'
 
   get '/auth/github/callback', to: "users#callback"
-  # get '/login/oauth/authorize', as: github_login
   get '/auth/github', as: :github_login
 
   # Is this being used?
