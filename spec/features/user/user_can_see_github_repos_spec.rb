@@ -18,7 +18,18 @@ describe 'User Dashboard View' do
 
       within(first(".repo")) do
         expect(page).to have_css('.name')
+        expect(page).to have_link('cross_check')
       end
+    end
+
+    it 'Non-GitHub user does not see this section' do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit dashboard_path
+
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to_not have_content('GitHub')
     end
   end
 end

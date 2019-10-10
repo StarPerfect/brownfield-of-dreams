@@ -8,14 +8,16 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <%= button_to 'Connect to Github', '/auth/github' %>
-  <section>
-    <h2>GitHub</h2>
-    <% facade.repos.each do |r| %>
-    <ul class='repo'>
-      <li class='name'><%= r.name %></li>
-      </ul>
-    <% end %>
-  </section>
+  <% if  current_user.github_token != nil %>
+    <section>
+      <h2>GitHub</h2>
+      <% facade.repos.each do |r| %>
+      <ul class='repo'>
+        <li class='name'><%= link_to r.name, "#{r.html_url}" %></li>
+        </ul>
+      <% end %>
+    </section>
+  <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
