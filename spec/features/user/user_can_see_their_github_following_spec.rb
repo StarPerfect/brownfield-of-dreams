@@ -25,11 +25,3 @@ describe "User Following Section" do
     end
   end
 end
-
-
-
-# As a logged in user
-# When I visit /dashboard
-# Then I should see a section for "Github"
-# And under that section I should see another section titled "Following"
-# And I should see list of users I follow with their handles linking to their Github profile
