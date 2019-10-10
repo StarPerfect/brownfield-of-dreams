@@ -10,7 +10,13 @@ class UserFacade
     end.take(5)
   end
 
-private
+  def followers
+    service = GithubApiService.new
+    service.get_user_followers.map do |data|
+      Follower.new(data)
+    end
+  end
 
+private
   attr_reader :current_user
 end
