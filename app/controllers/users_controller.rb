@@ -22,7 +22,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def callback
+    token = request.env['omniauth.auth']['credentials']['token']
+    nickname = request.env['omniauth.auth']['info']['nickname']
+    auth_update(token, nickname)
+  end
+
   private
+
+  def auth_update(token, nickname)
+    current_user.update_attribute(:github_token, token)
+    current_user.update_attribute(:github_nickname, nickname)
+    flash[:success] = "You're now connected to Github!"
+    redirect_to dashboard_path
+  end
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
