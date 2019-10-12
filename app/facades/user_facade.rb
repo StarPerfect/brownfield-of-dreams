@@ -12,13 +12,13 @@ class UserFacade
 
   def followers
   @service.get_user_followers.map do |data|
-      Follower.new(data)
+      GithubUser.new(data)
     end
   end
 
   def following
     @service.get_user_following.map do |data|
-      Following.new(data)
+      GithubUser.new(data)
     end
   end
 
