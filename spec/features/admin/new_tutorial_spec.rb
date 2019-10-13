@@ -24,10 +24,24 @@ describe 'Add New Tutorial by Admin' do
       click_on 'Save'
 
       tutorial = Tutorial.last
-      video = create(:video, tutorial: tutorial)
 
       expect(current_path).to eq("/tutorials/#{tutorial.id}")
       expect(page).to have_content('Successfully created tutorial.')
+    end
+
+    it 'can give error messages if incomplete information' do
+      visit new_admin_tutorial_path
+
+      fill_in 'Title', with: nil
+      fill_in 'Description', with: nil
+      fill_in 'Thumbnail', with: nil
+
+      click_on 'Save'
+
+      expect(current_path).to eq(new_admin_tutorial_path)
+      expect(page).to have_content("Title can't be blank")
+      expect(page).to have_content("Description can't be blank")
+      expect(page).to have_content("Thumbnail can't be blank")
     end
   end
 end
