@@ -6,11 +6,14 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    tutorial = Tutorial.create(tutorial_params)
+    tutorial = Tutorial.new(tutorial_params)
     if tutorial.save
       flash[:success] = 'Successfully created tutorial.'
+      redirect_to tutorial_path(tutorial)
+    else
+      flash[:error] = tutorial.errors.full_messages.to_sentence
+      redirect_to new_admin_tutorial_path
     end
-    redirect_to tutorial_path(tutorial)
   end
 
   def new
