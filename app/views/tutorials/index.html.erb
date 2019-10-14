@@ -1,16 +1,31 @@
 <main class="tutorials">
-  <% @tutorials.each do |tutorial| %>
-  <section class="tutorial">
-    <div class="tutorial-thumbnail col md-col-2">
-      <a>
-        <img class"thumbnail" src= <%= "#{tutorial.thumbnail}" %> alt="">
-      </a>
-    </div>
+    <% @tutorials.each do |tutorial| %>
+      <% if current_user && tutorial.classroom == true %>
+      <section class="tutorial">
+        <div class="tutorial-thumbnail col md-col-2">
+          <a>
+            <img class"thumbnail" src= <%= "#{tutorial.thumbnail}" %> alt="">
+          </a>
+        </div>
 
-    <div class="tutorial-description col md-col-10">
-      <%= link_to tutorial.title, tutorial_path(tutorial) %>
-      <p> <%= tutorial.description %> </p>
-    </div>
-  </section>
-  <% end %>
+        <div class="tutorial-description col md-col-10">
+          <%= link_to tutorial.title, tutorial_path(tutorial) %>
+          <p> <%= tutorial.description %> </p>
+        </div>
+      </section>
+      <% elsif tutorial.classroom == false %>
+      <section class="tutorial">
+        <div class="tutorial-thumbnail col md-col-2">
+          <a>
+            <img class"thumbnail" src= <%= "#{tutorial.thumbnail}" %> alt="">
+          </a>
+        </div>
+
+        <div class="tutorial-description col md-col-10">
+          <%= link_to tutorial.title, tutorial_path(tutorial) %>
+          <p> <%= tutorial.description %> </p>
+        </div>
+      </section>
+      <% end %>
+    <% end %>
 </main>
