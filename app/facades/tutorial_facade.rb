@@ -22,6 +22,10 @@ class TutorialFacade < SimpleDelegator
     current_video.position < maximum_video_position
   end
 
+  def update_position
+    binding.pry
+  end
+
   private
 
   def current_video_index
