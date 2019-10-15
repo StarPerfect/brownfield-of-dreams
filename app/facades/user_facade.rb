@@ -22,6 +22,10 @@ class UserFacade
     end
   end
 
+  def email(username)
+    GithubUser.new(@service.get_user_email(username))
+  end
+
 private
   attr_reader :current_user
 end

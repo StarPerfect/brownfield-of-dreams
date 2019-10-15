@@ -15,13 +15,17 @@ class GithubApiService
     get_response('/user/following')
   end
 
+  def get_user_email(username)
+    get_response("/users/#{username}")
+  end
+
   private
 
   def get_response(url)
     json_response = conn.get(url)
     JSON.parse(json_response.body, symbolize_names: true)
   end
-
+  
   def conn
     Faraday.new(url: "https://api.github.com/") do |f|
       f.headers['Authorization'] =  "token #{@github_token}"
