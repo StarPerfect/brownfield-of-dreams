@@ -7,8 +7,12 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <%= button_to 'Connect to GitHub', github_login_path %>
-  <% if  current_user.github_token != nil %>
+
+  <% unless current_user.github_token %>
+    <%= button_to 'Connect to GitHub', github_login_path %>
+  <% end %>
+
+  <% if current_user.github_token %>
     <section class='github'>
       <h2>GitHub</h2>
         <% facade.repos.each do |r| %>

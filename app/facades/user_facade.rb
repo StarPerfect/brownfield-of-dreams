@@ -1,7 +1,7 @@
 class UserFacade
   def initialize(current_user)
     @current_user = current_user
-    @service = GithubApiService.new
+    @service = GithubApiService.new(current_user.github_token)
   end
 
   def repos
