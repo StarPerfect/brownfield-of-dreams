@@ -1,13 +1,3 @@
-# As a registered user
-# When I visit /dashboard
-# And I click "Send an Invite"
-# Then I should be on /invite
-#
-# And when I fill in "Github Handle" with <A VALID GITHUB HANDLE>
-# And I click on "Send Invite"
-# Then I should be on /dashboard
-# And I should see a message that says "Successfully sent invite!" (if the user has an email address associated with their github account)
-# Or I should see a message that says "The Github user you selected doesn't have an email address associated with their account."
 require 'rails_helper'
 
 describe 'Email Invitation Feature' do
@@ -34,23 +24,34 @@ describe 'Email Invitation Feature' do
     it 'can enter valid GitHub handle and send an invitation' do
       visit invite_path
 
-      fill_in :github_user, with: 'StarPerfect'
+      fill_in :sendee, with: 'StarPerfect'
 
-      click_o 'Send Invite'
+      click_on 'Send Invite'
 
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content('Successfully sent invite!')
     end
 
-    it 'can enter invalid GitHub handle and see an error message' do
+    it 'can enter valid GitHub handle that has no public email to see an error message' do
       visit invite_path
 
-      fill_in :github_user, with: 'SadPathUser'
+      fill_in :sendee, with: 'sadpathtylor'
 
       click_on 'Send Invite'
 
-      expect(current_path).to eq(dashboard_path)
+      expect(current_path).to eq(dahsboard_path)
       expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
+    end
+
+    it 'can enter invalid GitHub handle and see an error message' do
+      visit invite_path
+
+      fill_in :sendee, with: 'nopathuser'
+
+      click_on 'Send Invite'
+
+      expect(current_path).to eq(invite_path)
+      expect(page).to have_content("The handle you entered is not a valid GitHub user. Please try again.")
     end
   end
 end
