@@ -9,6 +9,12 @@ describe 'User Dashboard View' do
       stub_request(:get, "https://api.github.com/user/followers").to_return(status: 200, body: followers_response)
       following_response = File.open("./fixtures/github_following.json")
       stub_request(:get, "https://api.github.com/user/following").to_return(status: 200, body: following_response)
+      email_response = File.open("./fixtures/user_email.json")
+      stub_request(:get, "https://api.github.com/users/StarPerfect").to_return(status: 200, body: email_response)
+      sad_response = File.open("./fixtures/sadpath_email.json")
+      stub_request(:get, "https://api.github.com/users/sadpathtylor").to_return(status: 200, body: sad_response)
+      no_response = File.open("./fixtures/nopath_email.json")
+      stub_request(:get, "https://api.github.com/users/nopathuser").to_return(status: 200, body: no_response)
     end
 
     it 'Then I should see a section for "Github" with 5 repo names' do

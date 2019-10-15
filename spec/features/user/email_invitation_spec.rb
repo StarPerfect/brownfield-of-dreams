@@ -3,7 +3,6 @@ require 'rails_helper'
 describe 'Email Invitation Feature' do
   describe 'a registered user can visit /dashboard' do
     before :each do
-      VCR.turn_off!
       json_response = File.open("./fixtures/github_repo.json")
       stub_request(:get, "https://api.github.com/user/repos").to_return(status: 200, body: json_response)
       followers_response = File.open("./fixtures/github_followers.json")
@@ -37,8 +36,8 @@ describe 'Email Invitation Feature' do
     end
 
     it 'can enter valid GitHub handle that has no public email to see an error message' do
-      email_response = File.open("./fixtures/sadpath_email.json")
-      stub_request(:get, "https://api.github.com/users/sadpathtylor").to_return(status: 200, body: email_response)
+      sad_response = File.open("./fixtures/sadpath_email.json")
+      stub_request(:get, "https://api.github.com/users/sadpathtylor").to_return(status: 200, body: sad_response)
 
       visit invite_path
 
@@ -51,8 +50,8 @@ describe 'Email Invitation Feature' do
     end
 
     it 'can enter invalid GitHub handle and see an error message' do
-      email_response = File.open("./fixtures/nopath_email.json")
-      stub_request(:get, "https://api.github.com/users/nopathuser").to_return(status: 200, body: email_response)
+      no_response = File.open("./fixtures/nopath_email.json")
+      stub_request(:get, "https://api.github.com/users/nopathuser").to_return(status: 200, body: no_response)
 
       visit invite_path
 
