@@ -1,9 +1,8 @@
 class GithubUser
-  attr_reader :login, :html_url, :email
+  attr_reader :login, :html_url
 
   def initialize(data = {})
-    @login = data[:login] || nil
+    @login = data[:login]
     @html_url = data[:html_url]
-    @email = data[:email] || nil
   end
 end
