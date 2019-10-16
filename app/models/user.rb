@@ -9,4 +9,9 @@ class User < ApplicationRecord
   validates_presence_of :first_name
   enum role: %i[default admin]
   has_secure_password
+
+  def bookmarks
+    Tutorial.includes(videos: :user_videos)
+            .where(user_videos: {user_id: self.id})
+  end
 end
