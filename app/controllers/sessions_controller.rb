@@ -5,6 +5,11 @@ class SessionsController < ApplicationController
     @user ||= User.new
   end
 
+  def bkmrklogin
+    @user ||= User.new
+    flash[:notice] = 'User must login to bookmark videos.'
+  end
+
   def create
     user = User.find_by(email: params[:session][:email])
     if user&.authenticate(params[:session][:password])
