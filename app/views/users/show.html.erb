@@ -38,5 +38,12 @@
   <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
-  </section>
+    <% facade.bookmarked_tutorials.each do |tutorial| %>
+      <% tutorial.videos.each do |video| %>
+      <section class="bookmarks">
+        <p class="title"><%= video.title %></p>
+        <iframe src= <%="https://www.youtube.com/embed/#{video.id}" %>  width="450" height="300"></iframe>
+      <% end %>
+      </section>
+  <% end %>
 </section>
