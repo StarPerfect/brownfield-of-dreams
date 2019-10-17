@@ -19,9 +19,9 @@
   <section class='friendships'>
     <h1>Friends</h1>
     <% if current_user.friendships? %>
-    <% current_user.friends.each do |friend| %>
-      <p><%= friend.first_name + ' ' + friend.last_name %></p>
-    <% end %>
+      <% current_user.friends.each do |friend| %>
+        <p><%= friend.first_name + ' ' + friend.last_name %></p>
+      <% end %>
     <% else %>
       <p>No friends currently</p>
     <% end %>
