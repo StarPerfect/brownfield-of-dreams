@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Email Activation' do
+describe 'User Registration' do
   describe "when a guest user visits '/' and clicks Register" do
     it 'can complete the registration form and register for the site' do
       visit '/'
@@ -22,9 +22,18 @@ describe 'Email Activation' do
       expect(page).to have_content('This account has not yet been activated. Please check your email.')
     end
   end
+
+  describe 'Email Activation' do
+    it 'can click link in email and go to activated page' do
+      user = User.create!(first_name: 'Bob', last_name: 'Ross', password: 'HappyTree', status: 'inactive', email: 'Mr.Ross@gmail.com')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit "/users/#{user.id}/activate"
+    end
+  end
 end
 
-
+#
 # Background: The registration process above will trigger this story
 #
 # As a non-activated user
