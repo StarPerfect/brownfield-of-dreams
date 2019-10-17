@@ -29,18 +29,9 @@ describe 'User Registration' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit "/users/#{user.id}/activate"
+
+      expect(page).to have_content('Status: Active')
+      expect(page).to have_content('Thank you! Your account is now activated.')
     end
   end
 end
-
-#
-# Background: The registration process above will trigger this story
-#
-# As a non-activated user
-# When I check my email for the registration email
-# I should see a message that says "Visit here to activate your account."
-# And when I click on that link
-# Then I should be taken to a page that says "Thank you! Your account is now activated."
-#
-# And when I visit "/dashboard"
-# Then I should see "Status: Active"
