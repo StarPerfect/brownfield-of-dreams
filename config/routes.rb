@@ -50,4 +50,6 @@ Rails.application.routes.draw do
 
   get '/invite', to: 'invite#new'
   post '/invite', to: 'invite#create'
+
+  get '/users/:id/activate', to: 'activation#activate', as: :activation
 end
