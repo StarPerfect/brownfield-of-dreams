@@ -25,16 +25,18 @@ class UsersController < ApplicationController
   def callback
     token = request.env['omniauth.auth']['credentials']['token']
     nickname = request.env['omniauth.auth']['info']['nickname']
-    auth_update(token, nickname)
+    uid = request.env['omniauth.auth']['uid']
+    auth_update(token, nickname, uid)
     flash[:success] = "You're now connected to Github!"
     redirect_to dashboard_path
   end
 
   private
 
-  def auth_update(token, nickname)
+  def auth_update(token, nickname, uid)
     current_user.update_attribute(:github_token, token)
     current_user.update_attribute(:github_nickname, nickname)
+    current_user.update_attribute(:github_uid, uid)
   end
 
   def user_params
