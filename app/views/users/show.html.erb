@@ -16,6 +16,16 @@
     <%= button_to 'Connect to GitHub', github_login_path %>
   <% end %>
 
+  <section class='friendships'>
+    <h1>Friends</h1>
+    <% if current_user.friendships? %>
+    <% current_user.friends.each do |friend| %>
+      <p><%= friend.first_name + ' ' + friend.last_name %></p>
+    <% end %>
+    <% else %>
+      <p>No friends currently</p>
+    <% end %>
+  </section>
   <% if current_user.github_token %>
     <section class='github'>
       <h2>GitHub</h2>
@@ -28,12 +38,26 @@
         <% facade.followers.each do |f| %>
           <ul class='followers'>
             <li class='user'><%= link_to f.login, "#{f.html_url}" %></li>
+            <div id="github-following-<%= f.login %>">
+              <% if !current_user.friends?(f) %>
+                <%= button_to 'Add as Friend', add_friend_path(f.uid) %>
+              <% else %>
+                <p>Already friends or cannot friend at the moment.</p>
+              <% end %>
+            </div>
           </ul>
         <% end %>
         <h2>Following</h2>
         <% facade.following.each do |f| %>
           <ul class='following'>
             <li class='login'><%= link_to f.login, "#{f.html_url}" %></li>
+            <div id="github-following-<%= f.login %>">
+              <% if !current_user.friends?(f) %>
+                <%= button_to 'Add as Friend', add_friend_path(f.uid) %>
+              <% else %>
+                <p>Already friends or cannot friend at the moment.</p>
+              <% end %>
+            </div>
           </ul>
         <% end  %>
     </section>
