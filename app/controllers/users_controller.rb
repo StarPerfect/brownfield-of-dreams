@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
+      UserActivationMailer.activate(current_user).deliver_now
       flash[:success] = "Logged in as #{user.first_name} #{user.last_name}"
       flash[:activation] = 'This account has not yet been activated. Please check your email.'
       redirect_to dashboard_path
